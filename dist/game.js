@@ -1,13 +1,26 @@
+"use strict";
 (self["webpackChunktownship"] = self["webpackChunktownship"] || []).push([["game"],{
 
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Game)
+/* harmony export */ });
+class Game extends HoneyBoo.Game {
+  constructor(initData) {
+      super(initData);
+  }
+
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("Hello, World!");
+   const game = new Game(GAME_INIT_DATA);
+   game.init({gameConfig: GAME_CONFIG.config});
 });
 
 /***/ })

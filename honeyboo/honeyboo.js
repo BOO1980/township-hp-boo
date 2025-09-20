@@ -11,6 +11,25 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./honeyboo/src/game.js":
+/*!******************************!*\
+  !*** ./honeyboo/src/game.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Game: () => (/* binding */ Game)
+/* harmony export */ });
+class Game {
+    constructor(initData) {
+        console.log("Game initialized with data:", initData);
+    }
+}
+
+/***/ }),
+
 /***/ "./node_modules/ansi-html-community/index.js":
 /*!***************************************************!*\
   !*** ./node_modules/ansi-html-community/index.js ***!
@@ -2684,7 +2703,7 @@ module.exports.setLogLevel = function (level) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("5cec237a7a7f86fe4071")
+/******/ 		__webpack_require__.h = () => ("5581583e0e4010b4aa2a")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -3321,11 +3340,19 @@ var socketURL = createSocketURL(parsedResourceQuery);
 
 })();
 
-// This entry needs to be wrapped in an IIFE because it needs to be isolated against other entry modules.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
+"use strict";
 /*!*******************************!*\
   !*** ./honeyboo/src/index.js ***!
   \*******************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Game: () => (/* reexport safe */ _game__WEBPACK_IMPORTED_MODULE_0__.Game)
+/* harmony export */ });
+/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game */ "./honeyboo/src/game.js");
+
+
 
 })();
 

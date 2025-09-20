@@ -1,7 +1,7 @@
 const path = require("path");
 //const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-//const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 //const DefinePlugin = require("webpack/lib/DefinePlugin");
 //const fs = require("fs");
 //const CleanUpWebpackPlugin = require("./CleanUpWebpackPlugin");
@@ -28,7 +28,7 @@ let resolution = 0;
 let appBuildInfo = "";
 const debugBuild = true;
 let ui = "DEFAULT";
-let platform = "GAMESYS"; // will be GAMESYS / OCTOPUS or SLOTMASTERS
+//let platform = "GAMESYS"; // will be GAMESYS / OCTOPUS or SLOTMASTERS
 let demo = false;
 let theme = "";
 const clientVersion = packageFile.version;
@@ -125,11 +125,11 @@ const clientName = packageFile.gameName;
 //     console.log("***************************");
 //     console.log("******** IOS Build ********");
 //     console.log("***************************");
-//     resolution = 1;
+//    resolution = 1;
 //     appBuildInfo = "A1";
 // }
 
-// const gameInitData = {
+const gameInitData = {
 //     forceResolutionRequired: iosBuild === true,
 //     forceResolution: resolution,
 //     isIOSAppBuild: iosBuild,
@@ -145,7 +145,7 @@ const clientName = packageFile.gameName;
 //     ui: ui,
 //     debugBuild: debugBuild,
 //     gameID: platform === "YGGDRASIL" ? gatiFile.gameId : -1,
-// // };
+};
 
 // /*
 
@@ -165,7 +165,7 @@ const clientName = packageFile.gameName;
                                                                     
 // */
 
-// const patterns = [];
+ const patterns = [];
 // if (platform === "OCTOPUS") {
 //     patterns.push({
 //         from: "buildCfg/extrasForClients/forOctopus/octopusData/data",
@@ -174,7 +174,7 @@ const clientName = packageFile.gameName;
 // }
 
 // let assetTargetPath = "cdn/";
-// let sourceTargetPath = "source/";
+ let sourceTargetPath = "source/";
 // if (platform === "SLOTMASTERS") {
 //     assetTargetPath = "";
 //     sourceTargetPath = "";
@@ -193,10 +193,10 @@ const clientName = packageFile.gameName;
 //         to: "assets/game.css",
 //     });
 // } else {
-//     patterns.push({
-//         from: "assets/game.css",
-//         to: `${sourceTargetPath}game.css`,
-//     });
+    patterns.push({
+        from: "assets/game.css",
+        to: `${sourceTargetPath}game.css`,
+    });
 //     if (ui === "JELLY") {
 //         patterns.push({
 //             from: "assets/html/jelly.css",
@@ -214,10 +214,10 @@ const clientName = packageFile.gameName;
 //         from: "game/base64@2x.js",
 //         to: `${sourceTargetPath}game/base64@2x.js`,
 //     });
-//     patterns.push({
-//         from: `game/${platform}/`,
-//         to: `${sourceTargetPath}game/`,
-//     });
+    // patterns.push({
+    //     from: `game/${platform}/`,
+    //     to: `${sourceTargetPath}game/`,
+    // });
 // } else {
 //     patterns.push({
 //         from: "game",
@@ -228,14 +228,14 @@ const clientName = packageFile.gameName;
 //     from: "./CHANGELOG.md",
 //     to: `${sourceTargetPath}CHANGELOG.md`,
 // });
-// patterns.push({
-//     from: "honeypot/honeypot.js",
-//     to: `${sourceTargetPath}honeypot/honeypot.js`,
-// });
-// patterns.push({
-//     from: "honeypot/honeypot.js.map",
-//     to: `${sourceTargetPath}honeypot/honeypot.js.map`,
-// });
+patterns.push({
+    from: "honeyboo/honeyboo.js",
+    to: `${sourceTargetPath}honeyboo/honeyboo.js`,
+});
+patterns.push({
+    from: "honeyboo/honeyboo.js.map",
+    to: `${sourceTargetPath}honeyboo/honeyboo.js.map`,
+});
 // patterns.push({
 //     from: "honeypot/honeypot.js.LICENSE",
 //     to: `${sourceTargetPath}honeypot/honeypot.js.LICENSE`,
@@ -300,7 +300,7 @@ const clientName = packageFile.gameName;
 //     //     from: `honeypot/ui/${uiTypes[i]}/uiConfig.js`,
 //     //     to: `${sourceTargetPath}honeypot/ui/${uiTypes[i]}/uiConfig.js`,
 //     // });
-// //const copyStaticPlugin = new CopyWebpackPlugin({ patterns: patterns });
+    const copyStaticPlugin = new CopyWebpackPlugin({ patterns: patterns });
 
 // //const copyStaticPlugin = new CopyWebpackPlugin({ patterns: patterns });
 // }
@@ -418,7 +418,7 @@ uses our own webpack plugin now OptimiseAssetsWebpackPlugin
 // });
 
  const writeToDisk = true;
-const portnumber = platform === "YGGDRASIL" ? 8080 : 9002;
+const portnumber =  9002;
 
 module.exports = {
     mode: "development",
@@ -488,10 +488,10 @@ module.exports = {
         ],
     },
     plugins: [
-        // new DefinePlugin({
+         new DefinePlugin({
         //     PROD_BUILD: JSON.stringify(false),
         //     DEV_BUILD: JSON.stringify(true),
-        //     GAME_INIT_DATA: JSON.stringify(gameInitData),
+            GAME_INIT_DATA: JSON.stringify(gameInitData)
         //     PLATFORM: JSON.stringify(platform),
         //     DEMO: JSON.stringify(demo),
         //     CLIENT_VERSION: JSON.stringify(clientVersion),
@@ -500,14 +500,14 @@ module.exports = {
         //     IOSBUILD: JSON.stringify(iosBuild),
         //     UI: JSON.stringify(ui),
         //     DEBUGBUILD: JSON.stringify(debugBuild),
-        // }),
+        }),
         new HtmlWebPackPlugin({
             template: "index.html",
             hash: true,
             filename: "./index.html",
             random: `${Date.now()}`,
         }),
-        // copyStaticPlugin,
+         copyStaticPlugin,
         //createLowResAssetsPlugin,
         //ImageOptimisationPlugin,
         // new AudioTranscodeWebpackPlugin({
