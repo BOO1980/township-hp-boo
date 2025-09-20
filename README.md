@@ -8,3 +8,7 @@
 8: added env variable to script "start" on package.json
 9: npm start
 10: Error: Cannot find module 'C:\Repos\township-hp-boo\buildCfg\webpack.config.dev.js'
+11: created buildCfg\webpack.config.dev.js
+12: npm start
+13:  Error: Can't resolve './src' in 'C:\Repos\township-hp-boo' 
+
