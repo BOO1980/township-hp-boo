@@ -1,6 +1,6 @@
 const path = require("path");
 //const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
-//const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 //const CopyWebpackPlugin = require("copy-webpack-plugin");
 //const DefinePlugin = require("webpack/lib/DefinePlugin");
 //const fs = require("fs");
@@ -82,7 +82,7 @@ const clientName = packageFile.gameName;
 
 // console.log(`iosBuild = ${iosBuild}`);
 
-// const distFolder = iosBuild ? "devIOS" : "dev";
+ const distFolder = iosBuild ? "devIOS" : "dev";
 
 // for (let i = 0; i < process.argv.length; i++) {
 //     if (process.argv[i].indexOf("demo=") !== -1) {
@@ -417,8 +417,8 @@ uses our own webpack plugin now OptimiseAssetsWebpackPlugin
 //     dev: true,
 // });
 
-// const writeToDisk = true;
-// const portnumber = platform === "YGGDRASIL" ? 8080 : 9000;
+ const writeToDisk = true;
+const portnumber = platform === "YGGDRASIL" ? 8080 : 9002;
 
 module.exports = {
     mode: "development",
@@ -426,16 +426,16 @@ module.exports = {
         ignored: /node_modules/,
     },
     devServer: {
-        // static: {
-        //     directory: path.join(__dirname, `./${distFolder}`),
-        //     watch: true,
-        // },
-        // hot: false,
-        // liveReload: true,
-        // devMiddleware: {
-        //     writeToDisk: writeToDisk,
-        // },
-        // port: portnumber,
+        static: {
+            directory: path.join(__dirname, `./${distFolder}`),
+            watch: true,
+        },
+        hot: false,
+        liveReload: true,
+        devMiddleware: {
+            writeToDisk: writeToDisk,
+        },
+        port: 9002,
     },
     devtool: "source-map",
     entry: {
@@ -501,12 +501,12 @@ module.exports = {
         //     UI: JSON.stringify(ui),
         //     DEBUGBUILD: JSON.stringify(debugBuild),
         // }),
-        // new HtmlWebPackPlugin({
-        //     template: "index.html",
-        //     hash: true,
-        //     filename: "./index.html",
-        //     random: `${Date.now()}`,
-        // }),
+        new HtmlWebPackPlugin({
+            template: "index.html",
+            hash: true,
+            filename: "./index.html",
+            random: `${Date.now()}`,
+        }),
         // copyStaticPlugin,
         //createLowResAssetsPlugin,
         //ImageOptimisationPlugin,

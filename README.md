@@ -12,4 +12,14 @@
 12: npm start
 13:  Error: Can't resolve './src' in 'C:\Repos\township-hp-boo' 
 14: cleaned up webpack.config.dev.js to basic 
+15: Error: Can't resolve './src/index.js' in 'C:\Repos\township-hp-boo'
+16: ReferenceError: distFolder is not defined
+17: added distfolder to webpack.config.dev
+18: ReferenceError: writeToDisk is not defined
+19: added writeToDisk to webpack.config.dev
+20:ReferenceError: portnumber is not defined
+21: added portnumber to webpack.config.dev
+22: added "html-webpack-plugin": "^5.5.3", to package and webpack.config.dev.js
+
+
 

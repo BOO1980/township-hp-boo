@@ -1,0 +1,1 @@
+{"version":3,"file":"game.js","mappings":";;;;;;;;AAAA;AACA;AACA,CAAC,E","sources":["webpack://township/./src/index.js"],"sourcesContent":["document.addEventListener(\"DOMContentLoaded\", function() {\r\n    console.log(\"Hello, World!\");\r\n});"],"names":[],"sourceRoot":""}
