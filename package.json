@@ -5,10 +5,14 @@
     "zipFileName": "township",
     "description": "Township",
     "main": "game.js",
-    "scripts":{
-        "start": "webpack-dev-server --host 0.0.0.0 --config ./buildCfg/webpack.config.dev.js --env"
+    "author": "Hayley Boo",
+    "license": "ISC",
+    "homepage": "",
+    "scripts": {
+        "start": "webpack-dev-server --host 0.0.0.0 --config ./buildCfg/webpack.config.dev.js --env platform=GAMESYS"
     },
     "devDependencies": {
-        "webpack-dev-server": "^5.0.3",
+        "webpack-cli": "^6.0.1",
+        "webpack-dev-server": "^5.0.3"
     }
 }
