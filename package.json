@@ -1,0 +1,14 @@
+{
+    "name": "township",
+    "version": "0.0.0",
+    "gameName": "Township",
+    "zipFileName": "township",
+    "description": "Township",
+    "main": "game.js",
+    "scripts":{
+        "start": "webpack-dev-server --host 0.0.0.0 --config ./buildCfg/webpack.config.dev.js --env"
+    },
+    "devDependencies": {
+        "webpack-dev-server": "^5.0.3",
+    }
+}
