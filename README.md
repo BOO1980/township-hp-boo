@@ -11,4 +11,5 @@
 11: created buildCfg\webpack.config.dev.js
 12: npm start
 13:  Error: Can't resolve './src' in 'C:\Repos\township-hp-boo' 
+14: cleaned up webpack.config.dev.js to basic 
 
