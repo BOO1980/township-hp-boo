@@ -19,7 +19,7 @@ class Game extends HoneyBoo.Game {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-   const game = new Game(GAME_INIT_DATA);
+   const game = new Game({});
    game.init({gameConfig: GAME_CONFIG.config});
 });
 
